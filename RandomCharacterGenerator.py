@@ -41,16 +41,15 @@ def eleven_varible_combinations():
                                         for j in acceptable_characters:
                                             for k in acceptable_characters:
                                                 mega_list.append(a + b + c + d + e + f + g + h + i + j + k)
-          
-    
-    #save the list to a cvs file
-    with open('mega_list.csv', 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(mega_list)
-
-    #save the list to a text file
-    with open('mega_list.txt', 'w') as file:
-        for item in mega_list:
-            file.write("%s\n" % item)
-
     return mega_list
+          
+mega_list = eleven_varible_combinations()
+#save the list to a cvs file
+with open('mega_list.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerows(mega_list)
+
+#save the list to a text file
+with open('mega_list.txt', 'w') as file:
+    for item in mega_list:
+        file.write("%s\n" % item)

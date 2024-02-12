@@ -40,6 +40,7 @@ def eleven_varible_combinations():
                                     for i in acceptable_characters:
                                         for j in acceptable_characters:
                                             for k in acceptable_characters:
+                                                print(a + b + c + d + e + f + g + h + i + j + k)
                                                 mega_list.append(a + b + c + d + e + f + g + h + i + j + k)
     return mega_list
           

@@ -27,7 +27,7 @@ def two_varible_combinations():
     # execution_time = end_time - start_time
     # print("Execution time (without print):", execution_time, "seconds")
     return combs
-two_varible_combinations()
+# two_varible_combinations()
 
 def three_varible_combinations():
     """Summery:
@@ -66,7 +66,8 @@ def four_varible_combinations():
     execution_time = end_time - start_time
     print("Execution time:", execution_time, "seconds")
     return combs
-# four_varible_combinations()
+
+four_varible_list =  four_varible_combinations()
 
 def five_varible_combinations_BROKEN():
     """Summery:
@@ -87,28 +88,37 @@ def five_varible_combinations_BROKEN():
     print("Execution time:", execution_time, "seconds")
     return combs
 
-
-
-def five_varible_combinations_BROKEN():
-    """Summery:
-    MemoryError: 
-    Print all the possible combinations of 5 varibles, each varible can be filled with 64 different characters. 
+def five_varible_combinations():
+    """Summary:
+    Apparently this is a yield funtion... I don't know what that means, but it works.
+    Generate all the possible combinations of 5 variables, each variable can be filled with 64 different characters. 
     Combinations: 1073741824
-    Execution time: Execution time (with print): estimated 16836.0 seconds, or 4.676666666666667 hours (estimated, i refuse to waste my time on this)
-    Execution time (without print): 267.0 seconds, or 4.45 minutes (estimated, MemoryError may occur)
     """
-    start_time = time.time()
-    mega_list = []
     alphanum = string.ascii_lowercase + string.digits + string.ascii_uppercase + '-_'
-    combs = [val1+val2+val3+val4+val5 for val1 in alphanum for val2 in alphanum for val3 in alphanum for val4 in alphanum for val5 in alphanum]
-    # print(len(combs))
-    # print(combs)
-    end_time = time.time()
-    execution_time = end_time - start_time
-    print("Execution time:", execution_time, "seconds")
-    return combs
+    for val1 in alphanum:
+        for val2 in alphanum:
+            for val3 in alphanum:
+                for val4 in alphanum:
+                    for val5 in alphanum:
+                        yield val1 + val2 + val3 + val4 + val5
+                        #so its just like my other funtions... ok not helping
+# Example usage:
+# for combination in five_varible_combinations():
+#      print(combination)
 
-five_varible_combinations()
+def add_two_lists_elements(list1, list2):
+    """Summary:
+    Add two lists elements together.
+    """
+    return [x + y for x, y in zip(list1, list2)]
 
-
-
+start_time = time.time()
+mega_list = [x + y for x in four_varible_list for y in acceptable_characters]
+start_time = time.time()
+end_time = time.time()
+execution_time = end_time - start_time
+print("Execution time:", execution_time, "seconds")
+json_data = json.dumps(mega_list)
+with open('mega_list.json', 'w') as file: file.write(json_data)
+print("Done")
+#I just need 5 varibles and 6 varibles lists and combine them a leasure to get 11 varibles list.
